@@ -10,19 +10,27 @@ app = Flask(__name__)
 def index():
     return redirect('/users/new')
 
-@app.route('/users/')
+@app.route('/users', methods=['GET','POST'])
 def user():
-    return render_template('/read(All).html', users=User.get_all())
+    return render_template('read(All).html', users=User.get_all())
 
 @app.route('/users/new')
 def new():
     return render_template('create.html')
 
-@app.route('/user/create', methods=['POST'])
+@app.route('/users/create', methods=["POST"])
 def create():
     print(request.form)
     User.save(request.form)
-    return redirect('/users/')
+    return redirect('/users')
+
+@app.route('/delete/<int:users_id>', methods=["POST"])
+def delete(users_id):
+    data ={
+        'id': users_id,
+    }
+    User.destroy( data)
+    return redirect('/users')
 
 
 

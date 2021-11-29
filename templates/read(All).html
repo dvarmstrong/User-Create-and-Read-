@@ -8,7 +8,7 @@
 
     <title>All Users!</title>
 </head>
-<body class="bg-primary container-sm">
+<body class="bg-light container-sm">
     <h1 class="text-center">All Users</h1>
     <table class = "table table-hover border">
         <thead>
@@ -22,14 +22,17 @@
         <tbody>
             {% for user in users %}
             <tr>
-                <td>{{user.first_name}}</td>
+                <td>{{user.first_name}} </td>
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.created_at}}</td>
-            </tr>
+                <td><a href="/delete{{users['id']}}">Delete</a></td>
+                <td><a href="/show{{users['id']}}">Show</a></td>
+                <td><a href="/edit{{users['id']}}">Edit</a></td>
             {% endfor %}
+            </tr>
         </tbody>
     </table>
-    <a href="/users/new" class="btn btn-dark">Add User</a>
+    <a href="/users" class="btn btn-dark">Add User</a>
 </body>
 </html>

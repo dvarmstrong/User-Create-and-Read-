@@ -21,13 +21,19 @@ class User:
 # Iterate over the db results and create instances of friends with cls.
         for user in results:
             users.append(cls(user))
-            return users
+        return users
 
     @classmethod
     def save(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, created_at, updated_at) VALUES ( %(First Name)s, %(Last Name)s, %(Email)s, NOW(), NOW() );" 
         result = connectToMySQL('user_schema').query_db(query,data)
         return result
+
+
+    @classmethod
+    def destroy(cls, data):
+        query = "DELETE FROM users WHERE id = %(id)s;"
+        return connectToMySQL('user_schema').query_db(query,data)
 
 
 
