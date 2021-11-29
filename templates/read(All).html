@@ -10,6 +10,7 @@
 </head>
 <body class="bg-light container-sm">
     <h1 class="text-center">All Users</h1>
+    <!-- <form action="/delete" method='post'> -->
     <table class = "table table-hover border">
         <thead>
             <tr>
@@ -26,13 +27,14 @@
                 <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.created_at}}</td>
-                <td><a href="/delete{{users['id']}}">Delete</a></td>
-                <td><a href="/show{{users['id']}}">Show</a></td>
-                <td><a href="/edit{{users['id']}}">Edit</a></td>
+                <td><a href="/delete/{{user.id}}">Delete</a></td>
+                <td><a href="/show/{{user.id}}">Show</a></td>
+                <td><a href="/edit/{{user.id}}">Edit</a></td>
             {% endfor %}
             </tr>
         </tbody>
     </table>
+    <!-- </form> -->
     <a href="/users" class="btn btn-dark">Add User</a>
 </body>
 </html>
