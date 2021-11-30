@@ -53,6 +53,10 @@ def delete(users_id):
     User.destroy( data)
     return redirect('/users')
 
+@app.route('/users/new')
+def Home():
+    return render_template('create.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
